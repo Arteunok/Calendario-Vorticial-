@@ -14,10 +14,10 @@ import {
   TextField,
   Switch,
   FormControlLabel,
-  Grid,
   IconButton,
   Badge
 } from '@mui/material';
+import Grid from '@mui/material/Grid';
 import {
   Notifications,
   Schedule,
@@ -292,44 +292,38 @@ const NotificationCenter: React.FC<NotificationCenterProps> = ({
           <Typography variant="h6" gutterBottom>
             Horarios de Notificación
           </Typography>
-          <Grid container spacing={2}>
-            <Grid item xs={4}>
-              <TextField
-                fullWidth
-                label="Mañana"
-                type="time"
-                value={notificationSettings.times.morning}
-                onChange={(e) => setNotificationSettings(prev => ({
-                  ...prev,
-                  times: { ...prev.times, morning: e.target.value }
-                }))}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <TextField
-                fullWidth
-                label="Tarde"
-                type="time"
-                value={notificationSettings.times.afternoon}
-                onChange={(e) => setNotificationSettings(prev => ({
-                  ...prev,
-                  times: { ...prev.times, afternoon: e.target.value }
-                }))}
-              />
-            </Grid>
-            <Grid item xs={4}>
-              <TextField
-                fullWidth
-                label="Noche"
-                type="time"
-                value={notificationSettings.times.evening}
-                onChange={(e) => setNotificationSettings(prev => ({
-                  ...prev,
-                  times: { ...prev.times, evening: e.target.value }
-                }))}
-              />
-            </Grid>
-          </Grid>
+          <Box sx={{ display: 'flex', gap: 2, flexWrap: 'wrap' }}>
+            <TextField
+              sx={{ minWidth: '150px', flex: 1 }}
+              label="Mañana"
+              type="time"
+              value={notificationSettings.times.morning}
+              onChange={(e) => setNotificationSettings(prev => ({
+                ...prev,
+                times: { ...prev.times, morning: e.target.value }
+              }))}
+            />
+            <TextField
+              sx={{ minWidth: '150px', flex: 1 }}
+              label="Tarde"
+              type="time"
+              value={notificationSettings.times.afternoon}
+              onChange={(e) => setNotificationSettings(prev => ({
+                ...prev,
+                times: { ...prev.times, afternoon: e.target.value }
+              }))}
+            />
+            <TextField
+              sx={{ minWidth: '150px', flex: 1 }}
+              label="Noche"
+              type="time"
+              value={notificationSettings.times.evening}
+              onChange={(e) => setNotificationSettings(prev => ({
+                ...prev,
+                times: { ...prev.times, evening: e.target.value }
+              }))}
+            />
+          </Box>
 
           <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
             Plataformas Sociales

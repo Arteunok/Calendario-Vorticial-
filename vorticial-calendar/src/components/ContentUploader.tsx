@@ -202,8 +202,9 @@ const ContentUploader: React.FC<ContentUploaderProps> = ({
                   label="Añadir tag"
                   onKeyPress={(e) => {
                     if (e.key === 'Enter') {
-                      handleTagAdd(file.name, e.currentTarget.value);
-                      e.currentTarget.value = '';
+                      const target = e.currentTarget as HTMLInputElement;
+                      handleTagAdd(file.name, target.value);
+                      target.value = '';
                     }
                   }}
                   disabled={uploading}
