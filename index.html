@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Calendario Vorticial de Publicación</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="app-header">
+      <h1>Calendario Vorticial de Publicación</h1>
+      <div class="controls">
+        <label>
+          Inicio del ciclo
+          <input id="startDate" type="date" />
+        </label>
+        <button id="btnGenerate" class="primary">Generar</button>
+        <button id="btnReset">Reiniciar</button>
+        <button id="btnExport">Exportar JSON</button>
+        <label class="file-input">
+          Importar JSON
+          <input id="fileImport" type="file" accept="application/json" />
+        </label>
+      </div>
+    </header>
+
+    <main class="layout">
+      <section class="chart" id="chart" aria-label="Calendario radial"></section>
+
+      <aside class="sidebar">
+        <h2>Edición</h2>
+        <div id="emptySelection" class="muted">Selecciona un punto del calendario para editar</div>
+        <form id="editForm" class="hidden" autocomplete="off">
+          <div class="field">
+            <label>ID</label>
+            <input id="postId" type="text" readonly />
+          </div>
+          <div class="field">
+            <label>Fecha</label>
+            <input id="postDate" type="datetime-local" />
+          </div>
+          <div class="field">
+            <label>Semana / Día / Slot</label>
+            <div class="triple">
+              <input id="postWeek" type="number" min="1" max="9" />
+              <input id="postDay" type="number" min="1" max="7" />
+              <select id="postSlot">
+                <option value="0">0 - Video</option>
+                <option value="1">1 - Foto</option>
+                <option value="2">2 - Digital</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Categoría</label>
+            <select id="postCategory"></select>
+          </div>
+          <div class="field">
+            <label>Título</label>
+            <input id="postTitle" type="text" placeholder="Título o idea" />
+          </div>
+          <div class="field">
+            <label>Descripción</label>
+            <textarea id="postCaption" rows="4" placeholder="Copy, notas, hashtags"></textarea>
+          </div>
+          <div class="field">
+            <label>Estado</label>
+            <select id="postStatus">
+              <option value="idea">Idea</option>
+              <option value="en_edicion">En edición</option>
+              <option value="aprobado">Aprobado</option>
+              <option value="programado">Programado</option>
+              <option value="publicado">Publicado</option>
+            </select>
+          </div>
+          <div class="actions">
+            <button type="button" id="btnSave" class="primary">Guardar</button>
+            <button type="button" id="btnDelete" class="danger">Vaciar</button>
+          </div>
+        </form>
+
+        <h2>Leyenda</h2>
+        <div id="legend" class="legend"></div>
+        <div class="legend media">
+          <div class="badge">V</div>
+          <span>Video</span>
+          <div class="badge">F</div>
+          <span>Foto</span>
+          <div class="badge">D</div>
+          <span>Digital</span>
+        </div>
+      </aside>
+    </main>
+
+    <footer class="app-footer">
+      <span>Prototipo local - guarda en tu navegador</span>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.9.0/d3.min.js" integrity="sha512-/ocgI3AGyI7Z9aQxZ4P0pKcIFj0kIycjTf0Xj9V0zKLWIrk0Ek5s8NNI67eLtZX4n4O+bzz5H9Gu4RAGkaa1eg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
